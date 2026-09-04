@@ -1,0 +1,14 @@
+advertising <- c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55)
+sales <- c(25, 30, 35, 40, 45, 50, 55, 60, 65, 70)
+
+business_data <- data.frame(advertising, sales)
+business_data
+
+model <- lm(sales ~ advertising, data = business_data)
+model
+
+new_data <- data.frame(advertising = 60)
+predict(model, new_data)
+
+plot(business_data$advertising, business_data$sales, col = "blue", main = "Regression Analysis", xlab = "Advertising", ylab = "Sales", pch = 8)
+abline(model, col = "orange", lwd = 2)
