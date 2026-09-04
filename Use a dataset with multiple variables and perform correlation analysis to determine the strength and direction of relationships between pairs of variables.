@@ -1,0 +1,11 @@
+advertising <- c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55)
+sales <- c(25, 30, 35, 40, 45, 50, 55, 60, 65, 70)
+customer <- c(100, 120, 140, 160, 180, 200, 220, 240, 260, 280)
+
+business_data <- data.frame(advertising, sales, customer)
+business_data
+str(business_data)
+cor(business_data)
+cor(business_data$advertising, business_data$sales)
+
+plot(business_data$advertising, business_data$sales, col = "red", main = "Advertising vs Sales", xlab = "Advertising", ylab = "Sales", pch = 15)
