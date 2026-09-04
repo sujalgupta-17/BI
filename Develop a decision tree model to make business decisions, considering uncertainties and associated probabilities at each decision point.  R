@@ -1,0 +1,16 @@
+cat("------ Decision Tree -----\n")
+cat("[]\n")
+cat(" |-- Launch Product to\n")
+cat(" |   |-- High Demand (P = 0.60) Profit = 100000\n")
+cat(" |   |-- Low Demand (P = 0.40) Loss = -20000\n")
+cat(" |\n")
+cat(" |-- Do not launch to\n")
+cat("     Profit = 20000\n")
+
+decision <- data.frame(
+  Decision = c("Launch Product", "Launch Product", "Do not Launch"),
+  Condition = c("High Demand", "Low Demand", "No Risk"),
+  Probability = c(0.60, 0.40, 1),
+  Profit = c(100000, -20000, 20000)
+)
+decision
