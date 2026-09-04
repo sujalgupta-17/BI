@@ -1,0 +1,18 @@
+mtcars
+View(mtcars)
+str(mtcars)
+summary(mtcars)
+dim(mtcars)
+
+cor(mtcars$hp, mtcars$mpg)
+max(mtcars$hp)
+min(mtcars$mpg)
+mtcars[mtcars$mpg > 25, ]
+
+hist(mtcars$mpg, col = "darkgreen", main = "Distribution of Mileage", xlab = "Miles Per Gallon", ylab = "Frequency")
+
+barplot(table(mtcars$cyl), col = "red", main = "Cars by Number of Cylinders", xlab = "Number of Cylinders", ylab = "Count")
+
+boxplot(mtcars$mpg, col = "yellow", main = "Mileage Boxplot")
+
+plot(mtcars$hp, mtcars$mpg, pch = 19, col = "brown", xlab = "Horsepower", ylab = "Mileage", main = "Horsepower vs mileage")
