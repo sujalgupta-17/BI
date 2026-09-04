@@ -1,0 +1,13 @@
+data <- read.csv("D:/1112u035/cus.csv")
+data
+str(data)
+summary(data)
+mean(data$Income)
+max(data$Income)
+cov(data$Income, data$Spending_Score)
+
+hist(data$Age, col = "blue", main = "Age Distribution", ylab = "Frequency", xlab = "Age")
+
+barplot(data$Spending_Score, names.arg = data$CustomerID, col = "red", main = "Customer Spending Score", xlab = "CustomerID", ylab = "Spending Score")
+
+plot(data$Income, data$Spending_Score, pch = 4, col = "darkred", xlab = "Income", ylab = "Spending Score", main = "Income vs Spending Score")
