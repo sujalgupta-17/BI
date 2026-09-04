@@ -1,0 +1,13 @@
+cars
+cars$dist
+summary(cars)
+str(cars)
+head(cars)
+
+par(mfrow = c(1, 3))
+
+hist(cars$speed, col = "pink", main = "Speed Histogram", ylab = "Frequency", xlab = "Speed")
+
+boxplot(cars$dist, col = "blue", main = "Distance Box Plot")
+
+barplot(table(cars$speed), col = "lightblue", main = "Cars", xlab = "Speed")
