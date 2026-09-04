@@ -1,0 +1,16 @@
+spending <- c(3300, 2500, 2700, 2300, 2800, 2400, 2600, 2500, 2900, 2100)
+
+mean(spending)
+
+std <- sd(spending)
+n <- length(spending)
+n
+
+se <- std / sqrt(n)
+se
+
+c1 <- mean(spending) - (1.96 * se)
+c2 <- mean(spending) + (1.96 * se)
+confidence_interval <- c(c1, c2)
+confidence_interval
+std
