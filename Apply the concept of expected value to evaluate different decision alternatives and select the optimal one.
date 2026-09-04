@@ -1,0 +1,18 @@
+P_high <- 0.60
+P_low <- 0.40
+
+Profit_high <- 100000
+Loss_low <- -20000
+Profit_no_launch <- 20000
+
+EV_launch <- (P_high * Profit_high) + (P_low * Loss_low)
+EV_no_launch <- Profit_no_launch
+
+cat("Expected value of launching : ", EV_launch, "\n")
+cat("Expected value of not launching : ", EV_no_launch, "\n")
+
+if (EV_launch > EV_no_launch) {
+  cat("Recommend Decision : LAUNCH THE PRODUCT\n")
+} else {
+  cat("Recommend Decision : DO NOT LAUNCH THE PRODUCT\n")
+}
