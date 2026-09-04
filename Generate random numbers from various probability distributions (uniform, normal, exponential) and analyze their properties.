@@ -1,0 +1,31 @@
+uniform_data <- runif(10, min = 0, max = 10)
+cat("\nUniform Distribution:\n")
+print(uniform_data)
+
+normal_data <- rnorm(10, mean = 50, sd = 10)
+cat("\nNormal Distribution:\n")
+print(normal_data)
+
+exp_data <- rexp(10, rate = 0.5)
+cat("\nExponential Distribution:\n")
+print(exp_data)
+
+cat("\nStatistical Analysis:\n")
+
+cat("\nUniform Distribution:\n")
+cat("Mean = ", mean(uniform_data), "\n")
+cat("Minimum = ", min(uniform_data), "\n")
+cat("Maximum = ", max(uniform_data), "\n")
+cat("Standard Deviation = ", sd(uniform_data), "\n")
+
+cat("\nNormal Distribution:\n")
+cat("Mean = ", mean(normal_data), "\n")
+cat("Minimum = ", min(normal_data), "\n")
+cat("Maximum = ", max(normal_data), "\n")
+cat("Standard Deviation = ", sd(normal_data), "\n")
+
+cat("\nExponential Distribution:\n")
+cat("Mean = ", mean(exp_data), "\n")
+cat("Minimum = ", min(exp_data), "\n")
+cat("Maximum = ", max(exp_data), "\n")
+cat("Standard Deviation = ", sd(exp_data), "\n")
