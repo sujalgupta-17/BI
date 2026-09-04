@@ -1,0 +1,17 @@
+study_hours <- c(2, 3, 4, 5, 3,
+                 2, 6, 4, 5, 3,
+                 4, 3, 2, 5, 6,
+                 3, 4, 5, 2, 3,
+                 6, 4, 3, 5, 4,
+                 2, 3, 4, 6, 5)
+
+population_mean <- mean(study_hours)
+population_mean
+
+samples <- replicate(10, sample(study_hours, size = 5, replace = FALSE), simplify = FALSE)
+samples
+
+sample_mean <- sapply(samples, mean)
+sample_mean
+
+hist(sample_mean, col = "pink", main = "Central", xlab = "Sample mean", ylab = "frequency", prob = TRUE)
