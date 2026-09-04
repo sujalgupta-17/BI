@@ -1,0 +1,34 @@
+
+iris
+iris$Petal.Width
+str(iris)
+summary(iris)
+
+mean(iris$Petal.Width)
+median(iris$Petal.Width)
+
+getmode <- function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+getmode(iris$Petal.Width)
+
+var(iris$Petal.Width)
+sd(iris$Petal.Width)
+min(iris$Petal.Width)
+max(iris$Petal.Width)
+range(iris$Petal.Width)
+quantile(iris$Petal.Width)
+
+hist(iris$Petal.Width, col = "orange", main = "Petals Distribution", ylab = "frequency", xlab = "Petal.Width")
+
+boxplot(iris$Petal.Width, col = "red", main = "Petals Width Box Plot")
+
+cat("mean = ", mean(iris$Petal.Width), "\n")
+cat("median = ", median(iris$Petal.Width), "\n")
+cat("mode = ", getmode(iris$Petal.Width), "\n")
+cat("variance = ", var(iris$Petal.Width), "\n")
+cat("standard deviation = ", sd(iris$Petal.Width), "\n")
+cat("max = ", max(iris$Petal.Width), "\n")
+cat("min = ", min(iris$Petal.Width), "\n")
+cat("range = ", range(iris$Petal.Width), "\n")
