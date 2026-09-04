@@ -1,0 +1,7 @@
+rolls <- 1000
+dice <- sample(1:6, rolls, replace = TRUE)
+result <- table(dice)
+print(result)
+
+probability <- result / rolls
+print(probability)
