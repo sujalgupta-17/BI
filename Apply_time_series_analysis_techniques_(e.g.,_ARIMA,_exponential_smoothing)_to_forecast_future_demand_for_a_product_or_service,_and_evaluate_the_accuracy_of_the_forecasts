@@ -1,0 +1,33 @@
+# Step 1: Historical demand data
+demand <- c(
+  120, 135, 128, 145, 150, 160,
+  155, 170, 165, 180, 190, 185,
+  200, 210, 205, 220, 230, 225,
+  240, 250, 245, 260, 270, 265
+)
+
+# Step 2: Convert to Time Series
+demand_ts <- ts(demand, frequency = 12)
+
+# Step 3: Visualize historical series
+plot(demand_ts, main = "Monthly Product Demand", xlab = "Year", ylab = "Demand")
+
+# Step 4: Forecasting Library
+library(forecast)
+
+# Step 5 & 6: Exponential Smoothing (ETS)
+model_es <- ets(demand_ts)
+forecast_es <- forecast(model_es, h = 6)
+plot(forecast_es, main = "Exponential Smoothing Forecast")
+
+# Step 7 & 8: ARIMA Model
+model_arima <- auto.arima(demand_ts)
+forecast_arima <- forecast(model_arima, h = 6)
+plot(forecast_arima, main = "ARIMA Forecast")
+
+# Step 9: Compare Model Accuracy
+accuracy(forecast_es)
+accuracy(forecast_arima)
+
+# Step 10: Print final 6-month ARIMA forecast
+print(forecast_arima)
