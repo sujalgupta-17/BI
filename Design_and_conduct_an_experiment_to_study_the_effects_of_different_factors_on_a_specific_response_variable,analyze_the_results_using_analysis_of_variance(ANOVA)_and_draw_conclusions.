@@ -1,0 +1,28 @@
+# Experimental data
+advertising <- c(
+  "A","A","A","A","A",
+  "B","B","B","B","B",
+  "C","C","C","C","C"
+)
+sales <- c(
+  52,55,51,54,53,
+  60,62,59,61,63,
+  70,72,68,71,73
+)
+data <- data.frame(advertising = as.factor(advertising), sales = sales)
+
+# Boxplot
+boxplot(sales ~ advertising, data = data,
+        main = "Sales by Advertising Method",
+        xlab = "Advertising Method",
+        ylab = "Sales", col = c("gold", "lightgreen", "coral"))
+
+# Group Means
+print(aggregate(sales ~ advertising, data = data, mean))
+
+# One-Way ANOVA
+model <- aov(sales ~ advertising, data = data)
+summary(model)
+
+# Post-hoc pairwise comparison
+TukeyHSD(model)
