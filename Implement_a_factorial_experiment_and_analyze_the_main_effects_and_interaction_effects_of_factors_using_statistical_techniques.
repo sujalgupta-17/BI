@@ -1,0 +1,43 @@
+# Data setup
+advertising <- c(
+  "Social Media", "Social Media",
+  "Social Media", "Social Media",
+  "Online Ads", "Online Ads",
+  "Online Ads", "Online Ads"
+)
+discount <- c(
+  "10%", "10%",
+  "20%", "20%",
+  "10%", "10%",
+  "20%", "20%"
+)
+sales <- c(
+  50, 52,
+  65, 67,
+  55, 57,
+  80, 82
+)
+
+data <- data.frame(
+  advertising = as.factor(advertising),
+  discount = as.factor(discount),
+  sales = sales
+)
+
+# Cell Means
+print(aggregate(sales ~ advertising + discount, data = data, mean))
+
+# Interaction Plot
+interaction.plot(
+  x.factor = data$discount,
+  trace.factor = data$advertising,
+  response = data$sales,
+  type = "b", pch = c(16, 17),
+  xlab = "Discount Level",
+  ylab = "Average Sales",
+  trace.label = "Advertising"
+)
+
+# Two-Way ANOVA with interaction
+model <- aov(sales ~ advertising * discount, data = data)
+summary(model)
