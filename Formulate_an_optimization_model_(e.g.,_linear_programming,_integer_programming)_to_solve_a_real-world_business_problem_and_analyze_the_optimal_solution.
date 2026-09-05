@@ -1,0 +1,30 @@
+# Load solver package
+library(lpSolve)
+
+# Objective coefficients (Profit per unit)
+profit <- c(40, 30)
+
+# Constraint matrix
+constraints <- matrix(c(
+  2, 3,
+  4, 2
+), nrow = 2, byrow = TRUE)
+
+# Constraint directions and RHS capacities
+directions <- c("<=", "<=")
+resources <- c(120, 160)
+
+# Solve the LP problem
+result <- lp(
+  direction = "max",
+  objective.in = profit,
+  const.mat = constraints,
+  const.dir = directions,
+  const.rhs = resources
+)
+
+# Output results
+cat("Optimal Production:\n")
+cat("Product A =", result$solution[1], "\n")
+cat("Product B =", result$solution[2], "\n")
+cat("Maximum Profit = ₹", result$objval, "\n")
