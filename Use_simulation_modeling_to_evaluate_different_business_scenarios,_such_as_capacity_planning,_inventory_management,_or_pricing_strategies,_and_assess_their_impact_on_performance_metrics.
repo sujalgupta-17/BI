@@ -1,0 +1,60 @@
+set.seed(123)
+days <- 30
+demand <- sample(5:15, days, replace = TRUE)
+
+# Inventory simulation function
+simulate_inventory <- function(order_quantity) {
+  inventory <- 20
+  total_sales <- 0
+  lost_sales <- 0
+  total_inventory <- 0
+  orders <- 0
+  
+  for (day in 1:days) {
+    if (inventory <= 5) {
+      inventory <- inventory + order_quantity
+      orders <- orders + 1
+    }
+    
+    sales <- min(inventory, demand[day])
+    lost <- demand[day] - sales
+    inventory <- inventory - sales
+    
+    total_sales <- total_sales + sales
+    lost_sales <- lost_sales + lost
+    total_inventory <- total_inventory + inventory
+  }
+  
+  return(c(
+    Total_Sales = total_sales,
+    Lost_Sales = lost_sales,
+    Average_Inventory = total_inventory / days,
+    Number_of_Orders = orders
+  ))
+}
+
+# Run policies
+results <- rbind(
+  Order_10 = simulate_inventory(10),
+  Order_20 = simulate_inventory(20),
+  Order_30 = simulate_inventory(30)
+)
+results <- as.data.frame(results)
+
+# Cost and profit calculation
+results$Revenue       <- results$Total_Sales * 50
+results$Holding_Cost  <- results$Average_Inventory * 2 * days
+results$Ordering_Cost <- results$Number_of_Orders * 100
+results$Profit        <- results$Revenue - results$Holding_Cost - results$Ordering_Cost
+
+print(results)
+
+# Visual comparison
+par(mfrow = c(1, 2))
+barplot(results$Profit, names.arg = rownames(results), main = "Profit Comparison", ylab = "Profit (₹)", col = "skyblue")
+barplot(results$Lost_Sales, names.arg = rownames(results), main = "Lost Sales Comparison", ylab = "Units Lost", col = "salmon")
+par(mfrow = c(1, 1))
+
+# Optimal policy
+best_scenario <- rownames(results)[which.max(results$Profit)]
+cat("Best Inventory Strategy:", best_scenario, "\n")
