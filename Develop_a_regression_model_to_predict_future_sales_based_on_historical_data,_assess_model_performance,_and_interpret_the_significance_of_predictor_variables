@@ -1,0 +1,24 @@
+# Input data
+advertising = c(10, 12, 15, 18, 20, 25, 28, 30)
+sales = c(50, 55, 60, 65, 70, 78, 85, 90)
+
+# Build linear regression model
+model = lm(sales ~ advertising)
+summary(model)
+
+# Predict for new advertising value
+new_data = data.frame(advertising = 32)
+prediction = predict(model, new_data)
+print(prediction)
+
+# Display R-Squared and model formula
+print(paste("R-Squared = ", summary(model)$r.squared))
+print(model)
+
+# Plotting
+plot(advertising, sales, 
+     main = "Advertising vs Sales",
+     xlab = "Advertising Expenditure",
+     ylab = "Sales",
+     pch = 19, col = "blue")
+abline(model, col = "red", lwd = 2)
